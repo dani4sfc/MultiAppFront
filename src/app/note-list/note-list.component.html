@@ -1,0 +1,38 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Edit</th>
+          <th scope="col">Title</th>
+          <th scope="col">Body</th>
+          <th scope="col">Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <!--With ngFor we can iterate the content of a var defined on the component-->
+        <tr *ngFor="let note of notes">
+
+          <!-- Pasar id como parámetro para mostrar notas individualmente-->
+           <td> <a class="btn btn-info" (click)="noteContent(note.id)">Edit</a> </td> 
+
+           <!-- routerLink="/content"-->
+          <td>{{ note.title }}</td>
+
+          <!-- TODO: check filters and apply here -->
+          <td>{{ (note.body.length>20)? (note.body | slice:0:20)+'...':(note.body) }}</td>
+          <!--LLamar a funcionalidad de borrar aqui-->
+          <td> <a  (click)="deleteNote(note.id)" class="btn btn-info bg-danger">Delete Note {{note.id}}</a> </td> 
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--Comunicacion con modulo hijo, dataTemp es variable del hijo y prueba bindeo del padre -->
+<!--<note-content [noteBody]='currentBody' [noteId]='currentId'>
+
+  
+
+</note-content>-->

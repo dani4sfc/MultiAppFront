@@ -1,0 +1,43 @@
+<div class="card my-5">
+  <div class="card-body">
+    <!--We link ngSubmit with the onSUbmit (component)-->
+
+    <div *ngIf='note != null'>
+      <form (ngSubmit)="onSubmit()" #noteForm="ngForm">
+
+
+        <!--We pass the onChange+ variable to content value -->
+
+        <div class="form-group">
+          <label for="title">Note</label>
+          <input type="text" [(ngModel)]="note.title" class="form-control" id="title" name="title" value="{{note.title}}"
+            placeholder="Enter the note title">
+        </div>
+
+        <div class="form-group">
+          <label for="body">Note</label>
+          <textarea [(ngModel)]="note.body" class="form-control" id="body" name="body" rows="10" cols="30" value="{{note.body}}" placeholder="Enter the note content"></textarea>
+        </div>
+
+        <!--
+        <div class="form-group">
+          <textarea name="comment" form="noteForm">Enter text here...</textarea> 
+
+           [(ngModel)]="note.body" 
+           required #body="ngModel"
+          <div [hidden]="!body.pristine" class="alert alert-danger">note body is required</div>
+
+
+        </div>
+        -->
+
+
+
+
+        <button type="submit" [disabled]="!noteForm.form.valid" class="btn btn-info">Submit</button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
